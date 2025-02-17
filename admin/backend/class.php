@@ -9,6 +9,34 @@ class global_class extends db_connect
         $this->connect();
     }
 
+    public function fetch_campus(){
+        $query = $this->conn->prepare("SELECT * from campus");
+
+        if ($query->execute()) {
+            $result = $query->get_result();
+            return $result;
+        }
+    }
+
+
+
+
+    public function AddCampus($campus_name, $campus_description)
+    {
+        $query = $this->conn->prepare("INSERT INTO `campus` (campus_name,campus_description) VALUES (?,?)");
+        if ($query === false) {
+            return false; 
+        }
+        $query->bind_param("ss",$campus_name, $campus_description);
+    
+        if ($query->execute()) {
+            return 200; 
+        } else {
+            return false; 
+        }
+    }
+
+
 
     public function check_account($admin_id) {
         // I-sanitize ang admin_id para maiwasan ang SQL injection

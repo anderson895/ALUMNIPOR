@@ -33,6 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'message' => 'Invalid email or password'
             ]);
         }
+    }else if($_POST['requestType']=='AddCampus'){
+
+        
+         $campus_name = $_POST['campus_name'];
+         $campus_description = $_POST['campus_description'];
+
+         echo $result = $db->AddCampus($campus_name, $campus_description);
+
+         
+
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Order request failed.']);
     }
