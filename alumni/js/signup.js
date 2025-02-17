@@ -17,6 +17,12 @@ $(document).ready(function(){
     <h6 class="text-lg font-semibold text-gray-800">Previous Work ${workCount}</h6>
     <hr class="mt-2 border-gray-300">
   </div>
+
+
+    <div class="mb-4">
+    <label for="companyName${workCount}" class="block text-sm font-medium text-gray-700">Company Name</label>
+    <input type="text" id="companyName${workCount}" name="companyName${workCount}" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500" required>
+  </div>
   
   <div class="mb-4">
     <label for="previousWork${workCount}" class="block text-sm font-medium text-gray-700">Address</label>

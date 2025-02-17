@@ -1,3 +1,11 @@
+<?php
+include('../admin/backend/class.php');
+
+$db = new global_class();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
