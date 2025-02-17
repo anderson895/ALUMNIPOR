@@ -1,5 +1,5 @@
 <?php
-include('../admin/backend/class.php');
+include('backend/class.php');
 
 $db = new global_class();
 
