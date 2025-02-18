@@ -60,6 +60,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
          
 
+    }else if($_POST['requestType']=='AlumniLogin'){
+
+
+        // Retrieve form data safely
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+       
+
+        // Hash password using SHA-256
+        $hashed_password = hash('sha256', $password);
+        
+
+
+        echo $user = $db->AlumniLogin($email,$hashed_password);
+
+
+         
+
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Order request failed.']);
     }

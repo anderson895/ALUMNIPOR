@@ -1,6 +1,65 @@
 $(document).ready(function () {
 
 
+
+  $("#frmLogin").submit(function (e) {
+    e.preventDefault();
+
+    $('.spinner').show();
+    $('#btnLogin').prop('disabled', true);
+    
+    var formData = $(this).serializeArray(); 
+    formData.push({ name: 'requestType', value: 'AlumniLogin' });
+    var serializedData = $.param(formData);
+
+    // Perform the AJAX request
+    $.ajax({
+        type: "POST",
+        url: "backend/end-points/controller.php",
+        data: serializedData,  
+        success: function (response) {
+            if(response.trim() === "success") {
+                alertify.success('Login Successful');
+
+                setTimeout(function() {
+                    window.location.href = "home.php";
+                }, 2000);  
+
+            }else if(response.trim() === "error"){
+
+              console.log(response)
+              $('.spinner').hide();
+              $('#btnLogin').prop('disabled', false);
+              alertify.error('Incorrect Email or Password');
+
+            } else {
+                $('.spinner').hide();
+                $('#btnLogin').prop('disabled', false);
+                console.log(response); 
+                alertify.error('Registration failed, please try again.');
+            }
+        },
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   $('#FrmRegister').submit(function(event){
     event.preventDefault(); // Prevent form submission
   

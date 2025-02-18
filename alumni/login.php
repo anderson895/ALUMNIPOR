@@ -17,9 +17,16 @@
     <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">ALUMNI</h2>
 
     <form id="frmLogin" class="space-y-6">
+   <!-- Spinner -->
+   <div class="spinner" id="spinner" style="display:none;">
+        <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+          <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+     </div>
+
       <div>
-        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
-        <input type="text" id="username" name="username" required
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <input type="text" id="email" name="email" required
                class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
       </div>
 

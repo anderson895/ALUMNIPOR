@@ -10,6 +10,29 @@ class global_class extends db_connect
     }
 
 
+    public function AlumniLogin($email,$hashedPassword){
+         // Prepare the SQL query
+         $query = $this->conn->prepare("SELECT * FROM `alumni` WHERE `email` = ? AND `password` = ? AND status = '1'");
+    
+         // Bind the email and the hashed password
+         $query->bind_param("ss", $email, $hashedPassword);
+         
+         // Execute the query
+         if ($query->execute()) {
+             $result = $query->get_result();
+             if ($result->num_rows > 0) {
+                 $user = $result->fetch_assoc();
+                 session_start();
+                 $_SESSION['alumni_id'] = $user['alumni_id'];
+     
+                 return "success";
+             } else {
+                return "error";
+             }
+         } else {
+             return false;
+         }
+    }
 
 
 
@@ -60,23 +83,19 @@ class global_class extends db_connect
 
 
 
-    public function check_account($admin_id) {
-        // I-sanitize ang admin_id para maiwasan ang SQL injection
-        $admin_id = intval($admin_id);
-    
-        // SQL query para hanapin ang admin_id sa table
-        $query = "SELECT * FROM admin WHERE admin_id = $admin_id";
+    public function check_account($alumni_id) {
+        
+        $query = "SELECT * FROM alumni WHERE alumni_id = $alumni_id";
     
         $result = $this->conn->query($query);
     
-        // Prepare ang array para sa result
         $items = [];
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $items[] = $row;
             }
         }
-        return $items; // Ibabalik ang array ng results o empty array kung walang nahanap
+        return $items; 
     }
 
 
