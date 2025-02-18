@@ -10,7 +10,7 @@ if (isset($_SESSION['alumni_id'])) {
     // Gamitin ang check_account method
     $user = $db->check_account($alumni_id);
 
-    print_r($user);
+    // print_r($user);
     if (!empty($user)) {
       
     } else {
@@ -52,7 +52,7 @@ if (isset($_SESSION['alumni_id'])) {
     <div class="container mx-auto flex justify-between items-center px-4">
         <!-- Logo Section -->
         <div class="flex items-center space-x-4">
-            <img src="../uploads/<?=$user[0]['profile_picture']?>" alt="Website Logo" class="w-12 h-12 object-contain">
+            <img src="../uploads/<?=$user[0]['profile_picture']?>" alt="Website Logo" class="rounded-full w-12 h-12 object-contain">
             <h1 class="text-2xl font-semibold"><?=$user[0]['fname']?> <?=$user[0]['mname']?> <?=$user[0]['lname']?></h1>
         </div>
 
@@ -66,13 +66,13 @@ if (isset($_SESSION['alumni_id'])) {
         </div>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:block">
+        <!-- <nav class="hidden lg:block">
             <ul class="flex space-x-6">
                 <li><a href="home.php" class="hover:text-gray-400 transition duration-300">Home</a></li>
                 <li><a href="campus.php" class="hover:text-gray-400 transition duration-300">Campus</a></li>
                 <li><a href="settings" class="hover:text-gray-400 transition duration-300">Settings</a></li>
             </ul>
-        </nav>
+        </nav> -->
 
         <!-- Call-to-Action Button -->
         <a href="logout.php"
@@ -86,7 +86,7 @@ if (isset($_SESSION['alumni_id'])) {
 <div id="sidebar" class="lg:hidden fixed inset-0  z-40 hidden transform -translate-x-full transition-transform duration-300 ease-in-out">
     <div class="w-64 bg-gray-800 text-white h-full p-4">
         <div class="flex justify-between items-center">
-            <img src="logo.png" alt="Website Logo" class="w-12 h-12 object-contain">
+            <!-- <img src="logo.png" alt="Website Logo" class="w-12 h-12 object-contain"> -->
             <button id="close-sidebar" class="text-white focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -94,8 +94,8 @@ if (isset($_SESSION['alumni_id'])) {
             </button>
         </div>
         <ul class="mt-8 space-y-6">
-            <li><a href="home.php" class="block hover:text-gray-400 transition duration-300">Home</a></li>
-            <li><a href="campus" class="block hover:text-gray-400 transition duration-300">Campus</a></li>
+            <!-- <li><a href="home.php" class="block hover:text-gray-400 transition duration-300">Home</a></li>
+            <li><a href="campus" class="block hover:text-gray-400 transition duration-300">Campus</a></li> -->
             <li><a href="settings.php" class="block hover:text-gray-400 transition duration-300">Settings</a></li>
             <li><a href="logout.php" class="block hover:text-gray-400 transition duration-300">Logout</a></li>
         </ul>

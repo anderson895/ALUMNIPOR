@@ -37,17 +37,15 @@ class global_class extends db_connect
 
 
 
-
-
-    public function AlumniRegistration($fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $hashed_password) {
+    public function AlumniRegistration($fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $hashed_password, $profilePictPath) {
         // Ensure $this->conn is defined
         if (!isset($this->conn)) {
             die("Database connection not initialized.");
         }
     
         // Prepare SQL statement
-        $sql = "INSERT INTO alumni (fname, mname, lname, bday, current_work, previous_work, student_no, year_enrolled, year_graduated, campus, course, email, password)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO alumni (fname, mname, lname, bday, current_work, previous_work, student_no, year_enrolled, year_graduated, campus, course, email, password, profile_picture)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
         $stmt = $this->conn->prepare($sql);
         
@@ -56,7 +54,7 @@ class global_class extends db_connect
         }
     
         // Bind parameters
-        $stmt->bind_param("sssssssssisss", $fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $hashed_password);
+        $stmt->bind_param("sssssssssissss", $fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $hashed_password, $profilePictPath);
     
         // Execute statement
         if ($stmt->execute()) {
@@ -65,6 +63,7 @@ class global_class extends db_connect
             return "Error: " . $stmt->error;
         }
     }
+    
     
 
 

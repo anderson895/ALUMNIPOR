@@ -7,6 +7,7 @@ $db = new global_class();
 
 
 ?>
+
 <div class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="w-full max-w-3xl bg-white p-10 rounded-lg shadow-lg relative space-y-6">  
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Signup</h2>
@@ -18,6 +19,14 @@ $db = new global_class();
           <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
      </div>
+
+        <!-- Profile picture -->
+      <div class="col-span-2">
+        <label for="profilePict" class="block text-sm font-medium text-gray-700">Upload Profile Picture</label>
+        <input type="file" id="profilePict" name="profilePict" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500" accept="image/*" required>
+      </div>
+
+
 
             <!-- Name Fields (1 Row) -->
       <div class="col-span-2 grid grid-cols-3 gap-4">

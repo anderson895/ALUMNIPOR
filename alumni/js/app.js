@@ -59,13 +59,11 @@ $(document).ready(function () {
 
 
 
-
   $('#FrmRegister').submit(function(event){
     event.preventDefault(); // Prevent form submission
   
     $('.spinner').show();
     $('#btnRegister').prop('disabled', true);
-    
   
     // Validate passwords
     if ($('#password').val() !== $('#confirm-password').val()) {
@@ -73,7 +71,14 @@ $(document).ready(function () {
       return;
     }
   
- 
+    // Validate image file type
+    var fileInput = $('#profilePict')[0];
+    var file = fileInput.files[0];
+    if (file && !file.type.startsWith('image/')) {
+      alertify.error('Please upload a valid image file!');
+      return;
+    }
+  
     let formData = new FormData();
     formData.append('fname', $('#first-name').val());
     formData.append('mname', $('#middle-name').val());
@@ -87,6 +92,11 @@ $(document).ready(function () {
     formData.append('email', $('#email').val());
     formData.append('password', $('#password').val());
     formData.append('requestType', 'AlumniRegistration');
+  
+    // Append profile picture
+    if (file) {
+      formData.append('profilePict', file);
+    }
   
     // Append current work
     formData.append('current_work[companyName]', $('#current_work_companyName').val());
@@ -115,26 +125,23 @@ $(document).ready(function () {
       processData: false, // Important
       contentType: false, // Important
       success: function(response) {
-       
         if(response.trim() === "success") {
           alertify.success('Account Created successfully!');
-           // Delay redirect by 2 seconds to allow message display
-           setTimeout(function() {
+          // Delay redirect by 2 seconds to allow message display
+          setTimeout(function() {
             window.location.href = "login.php";
-        }, 2000);  
-
+          }, 2000);  
+  
         } else {
-
           $('.spinner').hide();
           $('#btnRegister').prop('disabled', false);
-
           console.log(response);
           alertify.error(response);
         }
-        
       }
     });
   });
+  
   
 
 
