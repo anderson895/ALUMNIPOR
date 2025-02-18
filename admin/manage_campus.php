@@ -26,7 +26,8 @@
                     <tr>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">#</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">Campus Name</th>
-                        <th class="px-6 py-3 text-left text-gray-600 font-medium">Location</th>
+                        <th class="px-6 py-3 text-left text-gray-600 font-medium">Description</th>
+                        <th class="px-6 py-3 text-left text-gray-600 font-medium">Img</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium text-center">Actions</th>
                     </tr>
                 </thead>
@@ -73,6 +74,14 @@
 
         <!-- Modal Form for Adding Campus -->
         <form id="frmAddCampus" class="space-y-4">
+
+        <!-- Campus Images -->
+            <div>
+                <label for="campus_image" class="block text-sm font-medium text-gray-700">Campus Images</label>
+                <input type="file" name="campus_image" id="campus_image" accept="image/*" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+
             <!-- Campus Name -->
             <div>
                 <label for="campus_name" class="block text-sm font-medium text-gray-700">Campus Name</label>

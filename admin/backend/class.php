@@ -21,20 +21,27 @@ class global_class extends db_connect
 
 
 
-    public function AddCampus($campus_name, $campus_description)
+    public function AddCampus($campus_name, $campus_description, $campus_image)
     {
-        $query = $this->conn->prepare("INSERT INTO `campus` (campus_name,campus_description) VALUES (?,?)");
-        if ($query === false) {
-            return false; 
-        }
-        $query->bind_param("ss",$campus_name, $campus_description);
+        // Prepare the SQL query to insert campus data and image filename into the database
+        $query = $this->conn->prepare("INSERT INTO `campus` (campus_name, campus_description, campus_image) VALUES (?, ?, ?)");
     
+        // Check if the query preparation is successful
+        if ($query === false) {
+            return false;
+        }
+    
+        // Bind the parameters to the SQL query (ss for strings and s for the image filename)
+        $query->bind_param("sss", $campus_name, $campus_description, $campus_image);
+    
+        // Execute the query
         if ($query->execute()) {
-            return 200; 
+            return 200; // Success
         } else {
-            return false; 
+            return false; // Failure
         }
     }
+    
 
 
 

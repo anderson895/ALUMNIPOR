@@ -12,6 +12,10 @@ if (mysqli_num_rows($fetch_campus) > 0):
                         <td class="px-6 py-4"><?=$count?></td>
                         <td class="px-6 py-4"><?=$campus['campus_name']?></td>
                         <td class="px-6 py-4"><?=$campus['campus_description']?></td>
+                        <td class="px-6 py-4">
+                            <img src="../uploads/<?=$campus['campus_image']?>" alt="" class="w-24 h-24 object-cover">
+                        </td>
+
                       
                         <td class="px-6 py-4 text-center">
                             <button class="bg-gray-500 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition">Edit</button>

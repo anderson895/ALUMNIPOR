@@ -8,8 +8,10 @@ if (isset($_SESSION['alumni_id'])) {
     $alumni_id = intval($_SESSION['alumni_id']);
 
     // Gamitin ang check_account method
-    $result = $db->check_account($alumni_id);
-    if (!empty($result)) {
+    $user = $db->check_account($alumni_id);
+
+    print_r($user);
+    if (!empty($user)) {
       
     } else {
        header('location: login.php');
@@ -50,8 +52,8 @@ if (isset($_SESSION['alumni_id'])) {
     <div class="container mx-auto flex justify-between items-center px-4">
         <!-- Logo Section -->
         <div class="flex items-center space-x-4">
-            <img src="logo.png" alt="Website Logo" class="w-12 h-12 object-contain">
-            <h1 class="text-2xl font-semibold">Campus Selector</h1>
+            <img src="../uploads/<?=$user[0]['profile_picture']?>" alt="Website Logo" class="w-12 h-12 object-contain">
+            <h1 class="text-2xl font-semibold"><?=$user[0]['fname']?> <?=$user[0]['mname']?> <?=$user[0]['lname']?></h1>
         </div>
 
         <!-- Mobile Hamburger Menu Button -->
