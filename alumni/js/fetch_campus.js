@@ -45,10 +45,6 @@ $(".select-campus").on("click", function() {
                 });
                 $("#alumni-list").html(rows);
                 
-
-              
-              
-
                 // Show the table with a fade-in effect
                 $("#alumni-table").fadeIn();
             } else {

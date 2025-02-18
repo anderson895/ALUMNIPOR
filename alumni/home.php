@@ -41,52 +41,77 @@
 </div>
 
 
-
 <!-- Modal -->
 <div id="alumniModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 transition-opacity duration-300" style="display:none;">
-    <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-lg w-full">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full">
         <!-- Header -->
         <div class="flex justify-between items-center border-b pb-3">
-            <h2 class="text-2xl font-semibold text-gray-800">Alumni Details</h2>
-            <button class="closeAlumniModal text-gray-500 hover:text-red-600 text-2xl font-bold">&times;</button>
+            <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                <span class="material-icons text-blue-500 mr-2">school</span> Alumni Details
+            </h2>
+            <button class="closeAlumniModal text-gray-500 hover:text-red-600 text-3xl font-bold">
+                <span class="material-icons">close</span>
+            </button>
         </div>
 
         <!-- Profile Section -->
-        <div class="mt-4 text-center">
-            <img id="modalProfileImg" src="../uploads/default.jpg" alt="Profile Image" class="w-32 h-32 rounded-full mx-auto border-4 border-gray-200 shadow-md">
-            <h3 id="modalName" class="text-lg font-bold mt-3 text-gray-900"></h3>
+        <div class="mt-5 text-center">
+            <img id="modalProfileImg" src="../uploads/default.jpg" alt="Profile Image" class="w-36 h-36 rounded-full mx-auto border-4 border-gray-300 shadow-lg">
+            <h3 id="modalName" class="text-xl font-bold mt-3 text-gray-900"></h3>
         </div>
 
         <!-- Alumni Information -->
-        <div class="mt-4 space-y-3 text-gray-700">
-            <p><strong class="text-gray-900">Course:</strong> <span id="modalCourse"></span></p>
-            <p><strong class="text-gray-900">Year Graduated:</strong> <span id="modalYear"></span></p>
-            <p><strong class="text-gray-900">Email:</strong> <span id="modalEmail"></span></p>
-            <p><strong class="text-gray-900">Campus:</strong> <span id="modalCampus"></span></p>
-            <p><strong class="text-gray-900">Year Enrolled:</strong> <span id="modalYearEnrolled"></span></p>
-            <p><strong class="text-gray-900">Student No:</strong> <span id="modalStudentNo"></span></p>
-
-            <!-- Work Experience Section -->
-            <div class="border-t pt-3">
-                <h4 class="text-lg font-semibold text-gray-900">Work Experience</h4>
-                <p><strong class="text-gray-900">Current Work:</strong></p>
-                <div id="modalCurrentWork" class="bg-gray-100 p-3 rounded-md text-sm"></div>
-
-                <p class="mt-3"><strong class="text-gray-900">Previous Work:</strong></p>
-                <div id="modalPreviousWork" class="bg-gray-100 p-3 rounded-md text-sm"></div>
+        <div class="mt-5 space-y-4 text-gray-700">
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">book</span>
+                <p><strong class="text-gray-900">Course:</strong> <span id="modalCourse"></span></p>
+            </div>
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">calendar_today</span>
+                <p><strong class="text-gray-900">Year Graduated:</strong> <span id="modalYear"></span></p>
+            </div>
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">email</span>
+                <p><strong class="text-gray-900">Email:</strong> <span id="modalEmail"></span></p>
+            </div>
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">location_on</span>
+                <p><strong class="text-gray-900">Campus:</strong> <span id="modalCampus"></span></p>
+            </div>
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">history_edu</span>
+                <p><strong class="text-gray-900">Year Enrolled:</strong> <span id="modalYearEnrolled"></span></p>
+            </div>
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">badge</span>
+                <p><strong class="text-gray-900">Student No:</strong> <span id="modalStudentNo"></span></p>
             </div>
 
-            <p><strong class="text-gray-900">Birthday:</strong> <span id="modalBday"></span></p>
+            <!-- Work Experience Section -->
+            <div class="border-t pt-4">
+                <h4 class="text-lg font-semibold text-gray-900 flex items-center">
+                    <span class="material-icons text-gray-500 mr-2">work</span> Work Experience
+                </h4>
+                <div class="p-3 bg-gray-100 rounded-md shadow-sm">
+                    <p><strong class="text-gray-900">Current Work:</strong></p>
+                    <div id="modalCurrentWork" class="text-sm"></div>
+                </div>
+
+                <p class="mt-4"><strong class="text-gray-900">Previous Work:</strong></p>
+<div id="modalPreviousWork" class="bg-gray-100 p-3 rounded-md shadow-sm text-sm space-y-4 max-h-48 overflow-y-auto"></div>
+
+            </div>
+
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">cake</span>
+                <p><strong class="text-gray-900">Birthday:</strong> <span id="modalBday"></span></p>
+            </div>
         </div>
 
-        <!-- Close Button -->
-        <div class="mt-6 text-center">
-            <button class="closeAlumniModal bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition-all duration-300 w-full">
-                Close
-            </button>
-        </div>
+       
     </div>
 </div>
+
 
 
 
