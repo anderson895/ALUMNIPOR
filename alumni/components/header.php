@@ -66,13 +66,14 @@ if (isset($_SESSION['alumni_id'])) {
         <!-- Desktop Navigation Links -->
         <nav class="hidden lg:block">
             <ul class="flex space-x-6">
-                <li><a href="#" class="hover:text-gray-400 transition duration-300">Campus</a></li>
-                <li><a href="#" class="hover:text-gray-400 transition duration-300">Settings</a></li>
+                <li><a href="home.php" class="hover:text-gray-400 transition duration-300">Home</a></li>
+                <li><a href="campus.php" class="hover:text-gray-400 transition duration-300">Campus</a></li>
+                <li><a href="settings" class="hover:text-gray-400 transition duration-300">Settings</a></li>
             </ul>
         </nav>
 
         <!-- Call-to-Action Button -->
-        <a href="#"
+        <a href="logout.php"
            class="bg-blue-500 text-white py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300 hidden lg:inline-block">
             Logout
         </a>
@@ -91,9 +92,10 @@ if (isset($_SESSION['alumni_id'])) {
             </button>
         </div>
         <ul class="mt-8 space-y-6">
-            <li><a href="#" class="block hover:text-gray-400 transition duration-300">Campus</a></li>
-            <li><a href="#" class="block hover:text-gray-400 transition duration-300">Settings</a></li>
-            <li><a href="#" class="block hover:text-gray-400 transition duration-300">Logout</a></li>
+            <li><a href="home.php" class="block hover:text-gray-400 transition duration-300">Home</a></li>
+            <li><a href="campus" class="block hover:text-gray-400 transition duration-300">Campus</a></li>
+            <li><a href="settings.php" class="block hover:text-gray-400 transition duration-300">Settings</a></li>
+            <li><a href="logout.php" class="block hover:text-gray-400 transition duration-300">Logout</a></li>
         </ul>
     </div>
 </div>

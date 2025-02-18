@@ -1,6 +1,6 @@
 <?php include "../components/header.php";?>
 
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
+<body class="flex items-center justify-center min-h-screen bg-gray-600">
   
 <?php include "../function/PageSpinner.php"; ?>
 
