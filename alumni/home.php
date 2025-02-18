@@ -40,4 +40,35 @@
     </div>
 </div>
 
+
+
+<!-- Modal -->
+<div id="alumniModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center" style="display:none;">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <div class="flex justify-between items-center">
+            <h2 class="text-xl font-semibold">Alumni Details</h2>
+            <button id="closeModal" class="text-red-500 hover:text-red-700">&times;</button>
+        </div>
+        <div class="mt-4 text-center">
+            <img id="modalProfileImg" src="../uploads/default.jpg" alt="Profile Image" class="w-32 h-32 rounded-full mx-auto border">
+            <h3 id="modalName" class="text-lg font-bold mt-2"></h3>
+        </div>
+        <div class="mt-4 space-y-2">
+            <p><strong>Course:</strong> <span id="modalCourse"></span></p>
+            <p><strong>Year Graduated:</strong> <span id="modalYear"></span></p>
+            <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+            <p><strong>Campus:</strong> <span id="modalCampus"></span></p>
+            <p><strong>Year Enrolled:</strong> <span id="modalYearEnrolled"></span></p>
+            <p><strong>Student No:</strong> <span id="modalStudentNo"></span></p>
+            <p><strong>Previous Work:</strong> <span id="modalPreviousWork"></span></p>
+            <p><strong>Current Work:</strong> <span id="modalCurrentWork"></span></p>
+            <p><strong>Birthday:</strong> <span id="modalBday"></span></p>
+        </div>
+        <div class="mt-6 text-center">
+            <button id="closeAlumniModal" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 w-full">Close</button>
+        </div>
+    </div>
+</div>
+
+
 <?php include "components/footer.php"; ?>
