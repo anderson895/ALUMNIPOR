@@ -62,6 +62,12 @@
 
         <!-- Alumni Information -->
         <div class="mt-5 space-y-4 text-gray-700">
+
+            <div class="flex items-center">
+                <span class="material-icons text-gray-600 mr-2">cake</span>
+                <p><strong class="text-gray-900">Birthday:</strong> <span id="modalBday"></span></p>
+            </div>
+            
             <div class="flex items-center">
                 <span class="material-icons text-gray-600 mr-2">book</span>
                 <p><strong class="text-gray-900">Course:</strong> <span id="modalCourse"></span></p>
@@ -102,10 +108,7 @@
 
             </div>
 
-            <div class="flex items-center">
-                <span class="material-icons text-gray-600 mr-2">cake</span>
-                <p><strong class="text-gray-900">Birthday:</strong> <span id="modalBday"></span></p>
-            </div>
+          
         </div>
 
        

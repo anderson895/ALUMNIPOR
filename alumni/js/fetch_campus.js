@@ -71,7 +71,17 @@ $(document).on('click', '.view-btn', function() {
   var student_no = $(this).data('student_no');
   var previous_work = $(this).data('previous_work');
   var current_work = $(this).data('current_work');
-  var bday = $(this).data('bday');
+
+
+  
+  var bday = $(this).data('bday'); // Halimbawa: "2001-02-18"
+  var formattedBday = new Date(bday).toLocaleDateString('en-US', { 
+      month: 'long', 
+      day: 'numeric', 
+      year: 'numeric' 
+  });
+
+
   var profile_picture = $(this).data('profile_picture');
 
   // Construct profile image path
@@ -120,7 +130,7 @@ $(document).on('click', '.view-btn', function() {
   $('#modalCampus').text(campus);
   $('#modalYearEnrolled').text(year_enrolled);
   $('#modalStudentNo').text(student_no);
-  $('#modalBday').text(bday);
+  $('#modalBday').text(formattedBday);
   $('#modalPreviousWork').html(previousWorkHtml);
   $('#modalCurrentWork').html(currentWorkHtml);
 
