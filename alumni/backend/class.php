@@ -9,6 +9,44 @@ class global_class extends db_connect
         $this->connect();
     }
 
+
+
+
+
+
+
+
+    public function AlumniRegistration($fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $hashed_password) {
+        // Ensure $this->conn is defined
+        if (!isset($this->conn)) {
+            die("Database connection not initialized.");
+        }
+    
+        // Prepare SQL statement
+        $sql = "INSERT INTO alumni (fname, mname, lname, bday, current_work, previous_work, student_no, year_enrolled, year_graduated, campus, course, email, password)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+        $stmt = $this->conn->prepare($sql);
+        
+        if (!$stmt) {
+            die("Error preparing statement: " . $this->conn->error);
+        }
+    
+        // Bind parameters
+        $stmt->bind_param("sssssssssisss", $fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $hashed_password);
+    
+        // Execute statement
+        if ($stmt->execute()) {
+            return "Alumni registered successfully!";
+        } else {
+            return "Error: " . $stmt->error;
+        }
+    }
+    
+
+
+
+
     public function fetch_campus(){
         $query = $this->conn->prepare("SELECT * from campus");
 
@@ -40,7 +78,6 @@ class global_class extends db_connect
         }
         return $items; // Ibabalik ang array ng results o empty array kung walang nahanap
     }
-
 
 
 

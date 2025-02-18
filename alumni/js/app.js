@@ -1,18 +1,44 @@
 $(document).ready(function () {
+
+
   $('#FrmRegister').submit(function(event){
     event.preventDefault(); // Prevent form submission
-
+  
     console.log('click');
-    
-    // Collect current work data
-    let currentWork = {
-      companyName: $('#current_work_companyName').val(),
-      address: $('#current_work_address').val(),
-      position: $('#current_work_Position').val(),
-      start: $('#current_work_Start').val(),
-    };
-
-    // Collect previous work data into an array
+  
+    // // Validate passwords
+    // if ($('#password').val() !== $('#confirm-password').val()) {
+    //   alert('Passwords do not match!');
+    //   return;
+    // }
+  
+    // // Validate required fields
+    // if ($('#first-name').val().trim() === "" || $('#email').val().trim() === "") {
+    //   alert("First name and email are required!");
+    //   return;
+    // }
+  
+    let formData = new FormData();
+    formData.append('fname', $('#first-name').val());
+    formData.append('mname', $('#middle-name').val());
+    formData.append('lname', $('#last-name').val());
+    formData.append('bday', $('#bday').val());
+    formData.append('student_no', $('#studNo').val());
+    formData.append('year_enrolled', $('#enrolled_year').val());
+    formData.append('year_graduated', $('#graduated_year').val());
+    formData.append('campus', $('#campus').val());
+    formData.append('course', $('#course').val());
+    formData.append('email', $('#email').val());
+    formData.append('password', $('#password').val());
+    formData.append('requestType', 'AlumniRegistration');
+  
+    // Append current work
+    formData.append('current_work[companyName]', $('#current_work_companyName').val());
+    formData.append('current_work[address]', $('#current_work_address').val());
+    formData.append('current_work[position]', $('#current_work_Position').val());
+    formData.append('current_work[start]', $('#current_work_Start').val());
+  
+    // Append previous work as JSON
     let previousWorks = [];
     $('#previousWorkContainer .bg-white').each(function(){
       let previousWork = {
@@ -24,39 +50,25 @@ $(document).ready(function () {
       };
       previousWorks.push(previousWork);
     });
-
-    // Construct the data object
-    let formData = {
-      fname: $('#first-name').val(),
-      mname: $('#middle-name').val(),
-      lname: $('#last-name').val(),
-      bday: $('#bday').val(),
-      current_work: currentWork, // Directly store the object
-      previous_work: previousWorks, // Directly store the array
-      student_no: $('#studNo').val(),
-      year_enrolled: $('#enrolled_year').val(),
-      year_graduated: $('#graduated_year').val(),
-      campus: $('#campus').val(),
-      course: $('#course').val(),
-      email: $('#email').val(),
-      password: $('#password').val(),
-      requestType: 'AlumniRegistration' // Add requestType directly to the object
-    };
-
-    // Perform the AJAX request
+    formData.append('previous_work', JSON.stringify(previousWorks)); // Send as JSON string
+  
     $.ajax({
       url: "backend/end-points/controller.php",
       type: 'POST',
-      data: formData, // Send the object directly
+      data: formData,
+      processData: false, // Important
+      contentType: false, // Important
       success: function(response) {
-        // Handle success (response from server)
         console.log(response);
         alert('Form submitted successfully!');
       },
       error: function(xhr, status, error) {
-        // Handle error
         alert('Something went wrong. Please try again.');
       }
     });
   });
+  
+
+
+  
 });

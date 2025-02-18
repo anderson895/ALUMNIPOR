@@ -1,4 +1,12 @@
-<?php include "../components/header.php" ?>
+<?php 
+include "../components/header.php" ;
+
+include('backend/class.php');
+
+$db = new global_class();
+
+
+?>
 <div class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="w-full max-w-3xl bg-white p-10 rounded-lg shadow-lg relative space-y-6">  
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Signup</h2>
@@ -41,7 +49,7 @@
           </div>
           <div>
             <label for="current_work_address" class="block text-sm font-medium text-gray-700">Address</label>
-            <input type="text" id="current_work_address" name="current_work_company" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" >
+            <input type="text" id="current_work_address" name="current_work_address" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" >
           </div>
           <div>
             <label for="current_work_Position" class="block text-sm font-medium text-gray-700">Position</label>

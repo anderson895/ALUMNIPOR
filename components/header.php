@@ -1,9 +1,4 @@
-<?php
-include('backend/class.php');
 
-$db = new global_class();
-
-?>
 
 
 <!DOCTYPE html>
