@@ -2,6 +2,64 @@ $(document).ready(function () {
 
 
 
+
+
+  $(".select-campus").on("click", function() {
+    var campus_id = $(this).data("campus-id");
+    var campusname = $(this).data("campus-name");
+
+    $("#campus-name").text(campusname);
+
+    // Make AJAX request to fetch alumni for the selected campus
+    $.ajax({
+        url: "backend/end-points/controller.php",
+        method: "GET",
+        data: { campus_id: campus_id,requestType:'fetch_alumni_campus' },
+        dataType: "json",
+        success: function(response) {
+            if (response.status === "success") {
+                // Empty any previous data
+                $("#alumni-list").empty();
+
+                                // Populate the alumni list
+                  $.each(response.alumni, function(index, alumni) {
+                    var row = $("<tr></tr>").append(
+                        $("<td></td>").addClass("py-2 px-4 border-b text-center").text(alumni.fname + " " + alumni.lname),
+                        $("<td></td>").addClass("py-2 px-4 border-b text-center").text(alumni.course),
+                        $("<td></td>").addClass("py-2 px-4 border-b text-center").text(alumni.year_graduated),
+                        $("<td></td>").addClass("py-2 px-4 border-b text-center").text(alumni.email),
+                        $("<td></td>").addClass("py-2 px-4 border-b text-center").html(
+                          '<button class="w-auto px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-all duration-300 ease-in-out">View</button>'
+                      )
+                      
+                    );
+                    $("#alumni-list").append(row);
+                  });
+
+              
+              
+
+                // Show the table with a fade-in effect
+                $("#alumni-table").fadeIn();
+            } else {
+                alert("No alumni found for this campus.");
+            }
+        },
+        error: function() {
+            alert("Error fetching data.");
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
   $("#frmLogin").submit(function (e) {
     e.preventDefault();
 

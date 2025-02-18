@@ -118,8 +118,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    $response = $db->getPaymentQr();
-    echo json_encode(['status' => $response]);
+
+    if($_GET['requestType']=='fetch_alumni_campus'){
+
+        $campus_id=$_GET['campus_id'];
+
+        $response = $db->fetch_alumni_campus($campus_id);
+
+        echo json_encode([
+            'status' => 'success',
+            'alumni' => $response
+        ]);
+
+         
+
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Order request failed.']);
+    }
+   
 }
 
 

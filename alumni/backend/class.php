@@ -67,6 +67,21 @@ class global_class extends db_connect
     
 
 
+    public function fetch_alumni_campus($campus_id){
+        $query = "SELECT * FROM alumni WHERE campus = ?";
+        $stmt = $this->conn->prepare($query);  // Use $this->conn instead of $db
+        $stmt->bind_param("i", $campus_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $alumni = [];
+        while ($row = $result->fetch_assoc()) {
+            $alumni[] = $row;
+        }
+    
+        return $alumni;
+    }
+    
 
 
     public function fetch_campus(){
