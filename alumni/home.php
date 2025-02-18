@@ -20,49 +20,52 @@
     <?php endforeach; ?>
     </div>
 
-    <!-- Alumni Table (hidden initially) -->
-    <div id="alumni-table" class="hidden mt-8 p-4 bg-white rounded-lg shadow-lg">
-        <h3 class="text-2xl font-semibold mb-4">Alumni List on <span id="campus-name"></span></h3>
-        <table class="min-w-full table-auto">
-            <thead>
-                <tr>
-                    <th class="py-2 px-4 border-b">Name</th>
-                    <th class="py-2 px-4 border-b">Course</th>
-                    <th class="py-2 px-4 border-b">Year Graduated</th>
-                    <th class="py-2 px-4 border-b">Email</th>
-                    <th class="py-2 px-4 border-b">Action</th>
-                </tr>
-            </thead>
-            <tbody id="alumni-list">
-                <!-- Alumni data will be dynamically inserted here -->
-            </tbody>
-        </table>
-    </div>
-</div>
+ <!-- Alumni Table (hidden initially) -->
+        <div id="alumni-table" class="hidden mt-8 p-4 bg-white rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold mb-4">Alumni List on <span id="campus-name"></span></h3>
 
+            <!-- Responsive Table Wrapper -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-auto border-collapse border border-gray-300">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="py-2 px-4 border border-gray-300">Name</th>
+                            <th class="py-2 px-4 border border-gray-300">Course</th>
+                            <th class="py-2 px-4 border border-gray-300">Year Graduated</th>
+                            <th class="py-2 px-4 border border-gray-300">Email</th>
+                            <th class="py-2 px-4 border border-gray-300">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alumni-list">
+                        <!-- Alumni data will be dynamically inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+</div>
 
 <!-- Modal -->
 <div id="alumniModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 transition-opacity duration-300" style="display:none;">
-    <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-2xl w-full">
+    <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <!-- Header -->
         <div class="flex justify-between items-center border-b pb-3">
-            <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+            <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 flex items-center">
                 <span class="material-icons text-blue-500 mr-2">school</span> Alumni Details
             </h2>
-            <button class="closeAlumniModal text-gray-500 hover:text-red-600 text-3xl font-bold">
+            <button class="closeAlumniModal text-gray-500 hover:text-red-600 text-2xl sm:text-3xl font-bold">
                 <span class="material-icons">close</span>
             </button>
         </div>
 
         <!-- Profile Section -->
         <div class="mt-5 text-center">
-            <img id="modalProfileImg" src="../uploads/default.jpg" alt="Profile Image" class="w-36 h-36 rounded-full mx-auto border-4 border-gray-300 shadow-lg">
-            <h3 id="modalName" class="text-xl font-bold mt-3 text-gray-900"></h3>
+            <img id="modalProfileImg" src="../uploads/default.jpg" alt="Profile Image" class="w-28 sm:w-36 h-28 sm:h-36 rounded-full mx-auto border-4 border-gray-300 shadow-lg">
+            <h3 id="modalName" class="text-lg sm:text-xl font-bold mt-3 text-gray-900"></h3>
         </div>
 
         <!-- Alumni Information -->
         <div class="mt-5 space-y-4 text-gray-700">
-
             <div class="flex items-center">
                 <span class="material-icons text-gray-600 mr-2">cake</span>
                 <p><strong class="text-gray-900">Birthday:</strong> <span id="modalBday"></span></p>
@@ -104,16 +107,12 @@
                 </div>
 
                 <p class="mt-4"><strong class="text-gray-900">Previous Work:</strong></p>
-<div id="modalPreviousWork" class="bg-gray-100 p-3 rounded-md shadow-sm text-sm space-y-4 max-h-48 overflow-y-auto"></div>
-
+                <div id="modalPreviousWork" class="bg-gray-100 p-3 rounded-md shadow-sm text-sm space-y-4 max-h-48 overflow-y-auto"></div>
             </div>
-
-          
         </div>
-
-       
     </div>
 </div>
+
 
 
 

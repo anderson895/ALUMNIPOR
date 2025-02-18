@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2025 at 04:06 PM
+-- Generation Time: Feb 18, 2025 at 08:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -63,15 +63,17 @@ CREATE TABLE `alumni` (
   `campus` int(11) NOT NULL,
   `course` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '0=deleted,1=existing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `alumni`
 --
 
-INSERT INTO `alumni` (`alumni_id`, `profile_picture`, `fname`, `mname`, `lname`, `bday`, `current_work`, `previous_work`, `student_no`, `year_enrolled`, `year_graduated`, `campus`, `course`, `email`, `password`) VALUES
-(22, '', 'Joshua', '', 'Padilla', '2000-02-19', '{\"companyName\":\"racitel\",\"address\":\"abangan sur\",\"position\":\"fullstack developer\",\"start\":\"aug 19 2023\"}', '\"[{\\\"companyName\\\":\\\"Mobile legends\\\",\\\"address\\\":\\\"fkjshekjfhjk\\\",\\\"position\\\":\\\"mage\\\",\\\"start\\\":\\\"july 1\\\",\\\"end\\\":\\\"july 9\\\"},{\\\"companyName\\\":\\\"mobile legend 2\\\",\\\"address\\\":\\\"leifsfiesjiof\\\",\\\"position\\\":\\\"core\\\",\\\"start\\\":\\\"aug 1\\\",\\\"end\\\":\\\"aug 4\\\"}]\"', '104913060074', '2021', '2019', 2, 'course 1', 'andersonandy046@gmail.com', '61e36b4d463fcf248af31898805050d4b137bb54e74c4e7e9b95b35ccb0f9753');
+INSERT INTO `alumni` (`alumni_id`, `profile_picture`, `fname`, `mname`, `lname`, `bday`, `current_work`, `previous_work`, `student_no`, `year_enrolled`, `year_graduated`, `campus`, `course`, `email`, `password`, `status`) VALUES
+(30, 'profile_67b4d25a8cb262.57413112.jpg', 'jane', '', 'de leon', '2000-02-12', '{\"companyName\":\"GMA\",\"address\":\"awdawdawdaw\",\"position\":\"artist\",\"start\":\"july\"}', '\"[{\\\"companyName\\\":\\\"abs\\\",\\\"address\\\":\\\"awdawdawdwad\\\",\\\"position\\\":\\\"artist\\\",\\\"start\\\":\\\"aug\\\",\\\"end\\\":\\\"dec\\\"},{\\\"companyName\\\":\\\"tv5\\\",\\\"address\\\":\\\"awda\\\",\\\"position\\\":\\\"singer\\\",\\\"start\\\":\\\"may\\\",\\\"end\\\":\\\"jun\\\"}]\"', 'scawfdaw', '2015', '2020', 11, 'BSIT', 'janedel@gmail.com', '7017b9b076dee3755d8ef8d61bae230f131a46cd27373d7608a942d9cb6bdfea', 1),
+(31, 'profile_67b4d391d99cd5.25265862.jpg', 'Mary', 'loi', 'ricalde', '2001-02-18', '{\"companyName\":\"bini1\",\"address\":\"awdawd\",\"position\":\"gfsef\",\"start\":\"esfse\"}', '\"[{\\\"companyName\\\":\\\"bini 2\\\",\\\"address\\\":\\\"wadwad\\\",\\\"position\\\":\\\"efewfes\\\",\\\"start\\\":\\\"13awdaw\\\",\\\"end\\\":\\\"dawda\\\"},{\\\"companyName\\\":\\\"bini3\\\",\\\"address\\\":\\\"awdaw\\\",\\\"position\\\":\\\"esfsef\\\",\\\"start\\\":\\\"wad\\\",\\\"end\\\":\\\"awfd\\\"}]\"', '3123123', '2013', '2014', 15, 'BSCS', 'maloi@gmail.com', '129aecc7dbcd1af97ca80fd6507297bc486e0d4ac7acb0bc8f618fbf1b36823f', 1);
 
 -- --------------------------------------------------------
 
@@ -83,18 +85,19 @@ CREATE TABLE `campus` (
   `campus_id` int(11) NOT NULL,
   `campus_name` varchar(60) NOT NULL,
   `campus_description` text NOT NULL,
-  `campus_status` int(11) NOT NULL DEFAULT 1 COMMENT '0=deleted,1=existing'
+  `campus_status` int(11) NOT NULL DEFAULT 1 COMMENT '0=deleted,1=existing',
+  `campus_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `campus`
 --
 
-INSERT INTO `campus` (`campus_id`, `campus_name`, `campus_description`, `campus_status`) VALUES
-(1, 'Campus 1', 'awlkdjawiodawjdoiwua', 1),
-(2, 'Campus 2', 'awjkdhawkjdhawjkh', 1),
-(3, 'Campus 3', 'awfgregrsgserg', 1),
-(9, 'test', 'adawdawd', 1);
+INSERT INTO `campus` (`campus_id`, `campus_name`, `campus_description`, `campus_status`, `campus_image`) VALUES
+(10, 'DR', 'FTH', 1, 'campus_67b4b35b5d89f4.47880236.jpg'),
+(11, 'Campus 2', 'wadwadawd', 1, 'campus_67b4b480445184.56713195.jpg'),
+(12, 'campus 3', 'dwadaw', 1, 'campus_67b4b48e2ece17.01181728.jpg'),
+(15, 'campus 4', 'sefsefse', 1, 'campus_67b4b4ca82d8d9.11975031.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -132,13 +135,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `alumni_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `alumni_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `campus`
 --
 ALTER TABLE `campus`
-  MODIFY `campus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `campus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
