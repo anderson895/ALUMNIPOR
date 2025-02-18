@@ -28,7 +28,7 @@ $(".select-campus").on("click", function() {
                       <td class="py-2 px-4 border-b text-center">${alumni.email}</td>
                       <td class="py-2 px-4 border-b text-center">
                           <button class="view-btn w-auto px-6 py-3 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition-all duration-300 ease-in-out"
-                              data-campus="${alumni.campus}" 
+                              data-campus="${alumni.campus_name}" 
                               data-year_enrolled="${alumni.year_enrolled}" 
                               data-student_no="${alumni.student_no}"  
                               data-previous_work='${JSON.stringify(alumni.previous_work)}' 
@@ -44,7 +44,7 @@ $(".select-campus").on("click", function() {
                   </tr>`;
                 });
                 $("#alumni-list").html(rows);
-                
+
                 // Show the table with a fade-in effect
                 $("#alumni-table").fadeIn();
             } else {

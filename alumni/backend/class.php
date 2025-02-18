@@ -68,7 +68,11 @@ class global_class extends db_connect
 
 
     public function fetch_alumni_campus($campus_id){
-        $query = "SELECT * FROM alumni WHERE campus = ?";
+        $query = "SELECT * FROM alumni 
+        LEFT JOIN campus
+        ON campus.campus_id = alumni.campus
+        WHERE campus = ?
+        ";
         $stmt = $this->conn->prepare($query);  // Use $this->conn instead of $db
         $stmt->bind_param("i", $campus_id);
         $stmt->execute();
