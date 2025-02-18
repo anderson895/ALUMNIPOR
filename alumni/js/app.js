@@ -4,6 +4,8 @@ $(document).ready(function () {
   $('#FrmRegister').submit(function(event){
     event.preventDefault(); // Prevent form submission
   
+    $('.spinner').show();
+    $('#btnRegister').prop('disabled', true);
     
   
     // Validate passwords
@@ -55,10 +57,18 @@ $(document).ready(function () {
       contentType: false, // Important
       success: function(response) {
        
-
         if(response.trim() === "success") {
           alertify.success('Account Created successfully!');
+           // Delay redirect by 2 seconds to allow message display
+           setTimeout(function() {
+            window.location.href = "login.php";
+        }, 2000);  
+
         } else {
+
+          $('.spinner').hide();
+          $('#btnRegister').prop('disabled', false);
+
           console.log(response);
           alertify.error(response);
         }

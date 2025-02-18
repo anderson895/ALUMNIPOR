@@ -12,7 +12,12 @@ $db = new global_class();
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Signup</h2>
 
     <form id="FrmRegister" class="grid grid-cols-2 gap-6">
-      
+       <!-- Spinner -->
+    <div class="spinner" id="spinner" style="display:none;">
+        <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+          <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+     </div>
 
             <!-- Name Fields (1 Row) -->
       <div class="col-span-2 grid grid-cols-3 gap-4">
@@ -116,7 +121,7 @@ $db = new global_class();
         <input type="password" id="confirm-password" name="confirm-password" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" >
       </div>
 
-      <button type="submit" class="col-span-2 w-full py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:ring-2 focus:ring-green-500">Create Account</button>
+      <button type="submit" id="btnRegister" class="col-span-2 w-full py-3 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 focus:ring-2 focus:ring-green-500">Create Account</button>
     </form>
 
     <p class="mt-4 text-center text-sm text-gray-600">
