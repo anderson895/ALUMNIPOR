@@ -4,20 +4,15 @@ $(document).ready(function () {
   $('#FrmRegister').submit(function(event){
     event.preventDefault(); // Prevent form submission
   
-    console.log('click');
+    
   
-    // // Validate passwords
-    // if ($('#password').val() !== $('#confirm-password').val()) {
-    //   alert('Passwords do not match!');
-    //   return;
-    // }
+    // Validate passwords
+    if ($('#password').val() !== $('#confirm-password').val()) {
+      alertify.error('Passwords do not match!');
+      return;
+    }
   
-    // // Validate required fields
-    // if ($('#first-name').val().trim() === "" || $('#email').val().trim() === "") {
-    //   alert("First name and email are required!");
-    //   return;
-    // }
-  
+ 
     let formData = new FormData();
     formData.append('fname', $('#first-name').val());
     formData.append('mname', $('#middle-name').val());
@@ -59,11 +54,15 @@ $(document).ready(function () {
       processData: false, // Important
       contentType: false, // Important
       success: function(response) {
-        console.log(response);
-        alert('Form submitted successfully!');
-      },
-      error: function(xhr, status, error) {
-        alert('Something went wrong. Please try again.');
+       
+
+        if(response.trim() === "success") {
+          alertify.success('Account Created successfully!');
+        } else {
+          console.log(response);
+          alertify.error(response);
+        }
+        
       }
     });
   });

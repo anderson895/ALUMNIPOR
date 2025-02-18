@@ -37,7 +37,7 @@ class global_class extends db_connect
     
         // Execute statement
         if ($stmt->execute()) {
-            return "Alumni registered successfully!";
+            return "success";
         } else {
             return "Error: " . $stmt->error;
         }
