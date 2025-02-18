@@ -120,16 +120,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if($_GET['requestType']=='fetch_alumni_campus'){
+        $campus_id = $_GET['campus_id'] ?? null; // Ensure $campus_id is set
 
-        $campus_id=$_GET['campus_id'];
-
+        if (!$campus_id) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Missing campus_id'
+            ]);
+            exit;
+        }
+        
         $response = $db->fetch_alumni_campus($campus_id);
-
+        
+        // Decode current_work and previous_work if necessary
+        foreach ($response as &$alumnus) {
+            if (isset($alumnus['current_work'])) {
+                $alumnus['current_work'] = json_decode($alumnus['current_work'], true);
+            }
+        
+            if (isset($alumnus['previous_work'])) {
+                $alumnus['previous_work'] = json_decode($alumnus['previous_work'], true);
+                
+                // Decode again if previous_work is double-encoded
+                if (is_string($alumnus['previous_work'])) {
+                    $alumnus['previous_work'] = json_decode($alumnus['previous_work'], true);
+                }
+            }
+        }
+        
+        // Send JSON response
         echo json_encode([
             'status' => 'success',
             'alumni' => $response
-        ]);
-
+        ], JSON_UNESCAPED_UNICODE);
          
 
     } else {
