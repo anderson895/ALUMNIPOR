@@ -35,7 +35,9 @@ if (mysqli_num_rows($fetch_alumni) > 0):
                             data-email='<?=$alumni['email']?>'
                             data-alumni_id ='<?=$alumni['alumni_id']?>'
                             >Edit</button>
-                            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition ml-2">Delete</button>
+                            <button class="Show_delete_alumni_modal bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition ml-2"
+                            data-alumni_id ='<?=$alumni['alumni_id']?>'
+                            >Delete</button>
                         </td>
                     </tr>
     <?php

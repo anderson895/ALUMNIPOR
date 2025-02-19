@@ -2,6 +2,41 @@ $(document).ready(function () {
 
 
 
+  $("#frmDeleteAlumni").submit(function (e) {
+    e.preventDefault(); 
+
+    $('#spinner').show();
+    $('#btnDeleteAlumni').prop('disabled', true);
+    
+    var formData = new FormData(this);
+
+    formData.append('requestType', 'DeleteAlumni');
+    
+    $.ajax({
+        type: "POST",
+        url: "backend/end-points/controller.php",
+        data: formData,
+        processData: false, 
+        contentType: false,
+        success: function (response) {
+            console.log(response);
+            if(response.trim() === "success") {
+                alertify.success('Delete Successfully');
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+
+            }
+        },
+       
+    });
+});
+
+
+  
+
+
 
 
   $("#frmAddCampus").submit(function (e) {
@@ -119,10 +154,3 @@ $(document).ready(function () {
 
 
 
-$(document).ready(function(){
-  var startYear = 1900;
-  var endYear = new Date().getFullYear();
-  for(var year = endYear; year >= startYear; year--){
-    $('.year').append('<option value="'+year+'">'+year+'</option>');
-  }
-});

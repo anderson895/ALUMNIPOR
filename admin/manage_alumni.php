@@ -48,6 +48,42 @@
 
 
 
+<!-- Modal -->
+<div id="delete_alumni_modal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" style="display:none;">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full sm:w-[90%] max-w-lg max-h-[90vh] overflow-y-auto relative">
+
+        <!-- Close Button -->
+        <button class="close_delete_alumni_modal absolute top-3 right-3 text-gray-700 p-2 rounded-full hover:bg-gray-200 focus:outline-none">
+            &times;
+        </button>
+
+        <!-- Modal Content -->
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-800 text-center mb-4">Delete This Record?</h2>
+
+        <!-- Spinner (Loading State) -->
+        <div id="spinner" class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center hidden">
+            <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+
+        <!-- Modal Form -->
+        <form id="frmDeleteAlumni" class="space-y-4">
+
+            <input type="hidden" id="alumni_id_delete" name="alumni_id" required>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end gap-3">
+                <button type="button" class="close_delete_alumni_modal bg-gray-300 text-gray-700 px-5 py-2 rounded-lg hover:bg-gray-400">
+                    Cancel
+                </button>
+                <button type="submit" id="btnDeleteAlumni" class="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    Confirm
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 
 
 
@@ -195,10 +231,6 @@
         </form>
     </div>
 </div>
-
-<script>
-
-</script>
 
 
 

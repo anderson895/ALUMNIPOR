@@ -11,7 +11,7 @@ class global_class extends db_connect
 
 
     public function fetch_alumni(){
-        $query = $this->conn->prepare("SELECT * from alumni");
+        $query = $this->conn->prepare("SELECT * from alumni where status='1'");
 
         if ($query->execute()) {
             $result = $query->get_result();
@@ -21,7 +21,7 @@ class global_class extends db_connect
 
 
     public function fetch_campus(){
-        $query = $this->conn->prepare("SELECT * from campus");
+        $query = $this->conn->prepare("SELECT * from campus where campus_status='1'");
 
         if ($query->execute()) {
             $result = $query->get_result();
@@ -45,7 +45,19 @@ class global_class extends db_connect
     }
     
     
+    public function DeleteAlumni($alumni_id) {
+        $stmt = $this->conn->prepare("UPDATE alumni SET status = 0 WHERE alumni_id = ?");
+        $stmt->bind_param("s", $alumni_id);
+        
 
+         // Execute statement
+         if ($stmt->execute()) {
+            return "success";
+        } else {
+            return "Error: " . $stmt->error;
+        }
+    }
+    
 
 
     public function UpdateAlumni($alumni_id,$fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $profileFileName)

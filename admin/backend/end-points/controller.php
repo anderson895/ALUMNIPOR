@@ -136,7 +136,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     
-    }        else {
+    }else if($_POST['requestType']=='DeleteAlumni'){
+
+                $alumni_id = $_POST['alumni_id'];
+                echo $user = $db->DeleteAlumni($alumni_id);
+
+        
+
+
+    }else {
         echo json_encode(['status' => 'error', 'message' => 'Request type Invalid.']);
     }
 
