@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2025 at 08:16 PM
+-- Generation Time: Feb 19, 2025 at 05:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,8 +72,9 @@ CREATE TABLE `alumni` (
 --
 
 INSERT INTO `alumni` (`alumni_id`, `profile_picture`, `fname`, `mname`, `lname`, `bday`, `current_work`, `previous_work`, `student_no`, `year_enrolled`, `year_graduated`, `campus`, `course`, `email`, `password`, `status`) VALUES
-(30, 'profile_67b4d25a8cb262.57413112.jpg', 'jane', '', 'de leon', '2000-02-12', '{\"companyName\":\"GMA\",\"address\":\"awdawdawdaw\",\"position\":\"artist\",\"start\":\"july\"}', '\"[{\\\"companyName\\\":\\\"abs\\\",\\\"address\\\":\\\"awdawdawdwad\\\",\\\"position\\\":\\\"artist\\\",\\\"start\\\":\\\"aug\\\",\\\"end\\\":\\\"dec\\\"},{\\\"companyName\\\":\\\"tv5\\\",\\\"address\\\":\\\"awda\\\",\\\"position\\\":\\\"singer\\\",\\\"start\\\":\\\"may\\\",\\\"end\\\":\\\"jun\\\"}]\"', 'scawfdaw', '2015', '2020', 11, 'BSIT', 'janedel@gmail.com', '7017b9b076dee3755d8ef8d61bae230f131a46cd27373d7608a942d9cb6bdfea', 1),
-(31, 'profile_67b4d391d99cd5.25265862.jpg', 'Mary', 'loi', 'ricalde', '2001-02-18', '{\"companyName\":\"bini1\",\"address\":\"awdawd\",\"position\":\"gfsef\",\"start\":\"esfse\"}', '\"[{\\\"companyName\\\":\\\"bini 2\\\",\\\"address\\\":\\\"wadwad\\\",\\\"position\\\":\\\"efewfes\\\",\\\"start\\\":\\\"13awdaw\\\",\\\"end\\\":\\\"dawda\\\"},{\\\"companyName\\\":\\\"bini3\\\",\\\"address\\\":\\\"awdaw\\\",\\\"position\\\":\\\"esfsef\\\",\\\"start\\\":\\\"wad\\\",\\\"end\\\":\\\"awfd\\\"}]\"', '3123123', '2013', '2014', 15, 'BSCS', 'maloi@gmail.com', '129aecc7dbcd1af97ca80fd6507297bc486e0d4ac7acb0bc8f618fbf1b36823f', 1);
+(30, 'profile_67b542fc35fdb0.45857716.jpg', 'jane', '', 'de leon', '2000-02-12', '{\"companyName\":\"GMA\",\"address\":\"awdawdawdaw\",\"position\":\"artist\",\"start\":\"july\"}', '\"[{\\\"companyName\\\":\\\"abs\\\",\\\"address\\\":\\\"awdawdawdwad\\\",\\\"position\\\":\\\"artist\\\",\\\"start\\\":\\\"aug\\\",\\\"end\\\":\\\"dec\\\"},{\\\"companyName\\\":\\\"tv5\\\",\\\"address\\\":\\\"awda\\\",\\\"position\\\":\\\"singer\\\",\\\"start\\\":\\\"may\\\",\\\"end\\\":\\\"jun\\\"},{\\\"companyName\\\":\\\"company 3\\\",\\\"address\\\":\\\"sta.rosa 2\\\",\\\"position\\\":\\\"awdawd\\\",\\\"start\\\":\\\"dawd\\\",\\\"end\\\":\\\"fthtf\\\"}]\"', 'scawfdaw', '2015', '2020', 16, 'BSIT', 'janedel@gmail.com', '7017b9b076dee3755d8ef8d61bae230f131a46cd27373d7608a942d9cb6bdfea', 1),
+(31, 'profile_67b4d391d99cd5.25265862.jpg', 'mariz', 'loi', 'ricalde', '2001-02-18', '{\"companyName\":\"bini1\",\"address\":\"awdawd\",\"position\":\"gfsef\",\"start\":\"esfse\"}', '\"[{\\\"companyName\\\":\\\"bini 14\\\",\\\"address\\\":\\\"wadwad\\\",\\\"position\\\":\\\"efewfes\\\",\\\"start\\\":\\\"13awdaw\\\",\\\"end\\\":\\\"dawda\\\"},{\\\"companyName\\\":\\\"bini3\\\",\\\"address\\\":\\\"awdaw\\\",\\\"position\\\":\\\"esfsef\\\",\\\"start\\\":\\\"wad\\\",\\\"end\\\":\\\"awfd\\\"}]\"', '3123123', '2013', '2014', 19, 'BSCS', 'maloi@gmail.com', '129aecc7dbcd1af97ca80fd6507297bc486e0d4ac7acb0bc8f618fbf1b36823f', 1),
+(32, 'profile_67b4d391d99cd5.25265862.jpg', 'mariz', 'loi', 'ricalde', '2001-02-18', '{\"companyName\":\"bini1\",\"address\":\"awdawd\",\"position\":\"gfsef\",\"start\":\"esfse\"}', '\"[{\\\"companyName\\\":\\\"bini 14\\\",\\\"address\\\":\\\"wadwad\\\",\\\"position\\\":\\\"efewfes\\\",\\\"start\\\":\\\"13awdaw\\\",\\\"end\\\":\\\"dawda\\\"},{\\\"companyName\\\":\\\"bini3\\\",\\\"address\\\":\\\"awdaw\\\",\\\"position\\\":\\\"esfsef\\\",\\\"start\\\":\\\"wad\\\",\\\"end\\\":\\\"awfd\\\"}]\"', '3123123', '2013', '2014', 19, 'BSCS', 'maloi@gmail.com', '129aecc7dbcd1af97ca80fd6507297bc486e0d4ac7acb0bc8f618fbf1b36823f', 1);
 
 -- --------------------------------------------------------
 
@@ -94,10 +95,10 @@ CREATE TABLE `campus` (
 --
 
 INSERT INTO `campus` (`campus_id`, `campus_name`, `campus_description`, `campus_status`, `campus_image`) VALUES
-(10, 'DR', 'FTH', 1, 'campus_67b4b35b5d89f4.47880236.jpg'),
-(11, 'Campus 2', 'wadwadawd', 1, 'campus_67b4b480445184.56713195.jpg'),
-(12, 'campus 3', 'dwadaw', 1, 'campus_67b4b48e2ece17.01181728.jpg'),
-(15, 'campus 4', 'sefsefse', 1, 'campus_67b4b4ca82d8d9.11975031.jpeg');
+(16, 'campus 1', 'awawdaw', 1, 'campus_67b5529b72ff80.21106381.jpg'),
+(17, 'campus 2', 'fthtfhft', 0, 'campus_67b552a9831de9.35349753.jpg'),
+(18, 'campus 3', 'awfdawfse', 0, 'campus_67b553058113f6.17984709.jpg'),
+(19, 'campus 4', 'fdhdfhdth', 1, 'campus_67b5535c117e09.65316633.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -135,13 +136,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `alumni_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `alumni_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `campus`
 --
 ALTER TABLE `campus`
-  MODIFY `campus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `campus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
