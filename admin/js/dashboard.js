@@ -11,18 +11,23 @@ $(document).ready(function () {
 
               let totalAlumni = response.total_alumni;
               let totalCampus = response.total_campus;
+              let campusAlumni = response.campus_alumni; // Alumni count per campus
 
               $('.total_alumni').text(totalAlumni);
               $('.total_campus').text(totalCampus);
 
+              // Extract data for the chart
+              let campusNames = campusAlumni.map(campus => campus.campus_name);
+              let alumniCounts = campusAlumni.map(campus => campus.alumni_count);
+
               // Update chart if already initialized, else create it
               if (chart) {
-                  chart.updateSeries([{
-                      name: "Count",
-                      data: [totalCampus, totalAlumni]
-                  }]);
+                  chart.updateOptions({
+                      xaxis: { categories: campusNames },
+                      series: [{ name: "Total ALUMNI", data: alumniCounts }]
+                  });
               } else {
-                  createChart(totalCampus, totalAlumni);
+                  createChart(campusNames, alumniCounts);
               }
           },
           error: function(xhr, status, error) {
@@ -31,11 +36,11 @@ $(document).ready(function () {
       });
   };
 
-  const createChart = (totalCampus, totalAlumni) => {
+  const createChart = (campusNames, alumniCounts) => {
       let options = {
           series: [{
-              name: "Count",
-              data: [totalCampus, totalAlumni]
+              name: "Alumni Count",
+              data: alumniCounts
           }],
           chart: {
               type: 'bar',
@@ -52,9 +57,9 @@ $(document).ready(function () {
               enabled: false
           },
           xaxis: {
-              categories: ["Total Campus", "Total Alumni"]
+              categories: campusNames
           },
-          colors: ['#1E88E5', '#D32F2F']
+          colors: ['#1E88E5']
       };
 
       chart = new ApexCharts(document.querySelector("#chart"), options);

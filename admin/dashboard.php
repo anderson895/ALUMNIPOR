@@ -27,11 +27,11 @@
     </div>
 </div>
 
-<!-- Statistics Chart -->
+<!-- Alumni Distribution by Campus -->
 <div class="bg-white p-6 rounded-lg shadow-lg mt-6">
-    <h3 class="text-gray-700 font-semibold text-lg mb-4">Statistics</h3>
     <div id="chart"></div>
 </div>
+
 
 <?php include "components/footer.php"; ?>
 

@@ -13,18 +13,33 @@ class global_class extends db_connect
     public function get_analytics()
     {
         $query = $this->conn->prepare("
-         SELECT  
-            (SELECT COUNT(*) FROM `alumni` WHERE `status` = '1') AS total_alumni,
-            (SELECT COUNT(*) FROM `campus` WHERE `campus_status` = '1') AS total_campus
+            SELECT 
+                (SELECT COUNT(*) FROM `alumni` WHERE `status` = '1') AS total_alumni,
+                (SELECT COUNT(*) FROM `campus` WHERE `campus_status` = '1') AS total_campus
         ");
-    
+        
         if ($query->execute()) {
             $result = $query->get_result()->fetch_assoc();
-            // Return the result as JSON
+    
+            // Fetch the count of alumni per campus
+            $query_campus = $this->conn->prepare("
+                SELECT campus.campus_name, COUNT(alumni.alumni_id) AS alumni_count
+                FROM campus
+                LEFT JOIN alumni ON alumni.campus = campus.campus_id AND alumni.status = '1'
+                WHERE campus.campus_status = '1'
+                GROUP BY campus.campus_id
+            ");
+    
+            if ($query_campus->execute()) {
+                $campus_data = $query_campus->get_result()->fetch_all(MYSQLI_ASSOC);
+                $result['campus_alumni'] = $campus_data;
+            }
+    
             echo json_encode($result);
             return;
         }
     }
+    
     
     
 
