@@ -1,6 +1,6 @@
 <?php include "../components/header.php";?>
 
-<body class="flex items-center justify-center min-h-screen bg-gray-600">
+<body class="flex items-center justify-center min-h-screen bg-gray-800">
   
 <?php include "../function/PageSpinner.php"; ?>
 
@@ -16,7 +16,9 @@
     <!-- Logo -->
     <div class="flex justify-center mb-6">
       <!-- <img src="assets/logo1.png" alt="Adornasia" class="w-30 h-30 object-contain"> -->
-      <i class="fas fa-user-shield text-blue-500 text-6xl"></i>
+      <a href="../">
+          <i class="fas fa-user-shield text-blue-500 text-6xl"></i>
+      </a>
     </div>
 
     <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Administrator</h2>
