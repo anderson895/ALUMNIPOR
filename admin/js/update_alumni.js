@@ -133,7 +133,7 @@ $("#update_alumni_modal").click(function(event) {
     event.preventDefault(); // Prevent form submission
   
     $('.spinner').show();
-    $('#btnRegister').prop('disabled', true);
+    $('#btnUpdateAlumni').prop('disabled', true);
   
     
   
@@ -201,7 +201,7 @@ $("#update_alumni_modal").click(function(event) {
   
         } else {
           $('.spinner').hide();
-          $('#btnRegister').prop('disabled', false);
+          $('#btnUpdateAlumni').prop('disabled', false);
           console.log(response);
           alertify.error(response);
         }

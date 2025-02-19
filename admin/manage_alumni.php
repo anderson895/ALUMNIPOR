@@ -64,12 +64,6 @@
             &times;
         </button>
 
-        <!-- Spinner -->
-        <div class="spinner" style="display:none;">
-            <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
-                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-            </div>
-        </div>
 
         <!-- Modal Content -->
         <h2 class="text-2xl font-semibold text-gray-800 mb-6">Update Details</h2>
@@ -77,7 +71,7 @@
         <!-- Modal Form for Adding Campus -->
         <form id="frmUpdateAlumni" class="space-y-4">
 
-                <div class="spinner" id="spinner" style="display:none;">
+            <div class="spinner" id="spinner" style="display:none;">
                 <div class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
                 <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
