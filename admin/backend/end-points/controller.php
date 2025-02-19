@@ -76,8 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     }else if($_POST['requestType']=='UpdateAlumni'){
     
-            print_r($_POST);
-
                     // Retrieve form data safely
             $alumni_id = $_POST['alumni_id'];
             $fname = isset($_POST['fname']) ? trim($_POST['fname']) : '';

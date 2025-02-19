@@ -193,10 +193,10 @@ $("#update_alumni_modal").click(function(event) {
       contentType: false, // Important
       success: function(response) {
         if(response.trim() === "success") {
-          alertify.success('Account Created successfully!');
+          alertify.success('Update successfully!');
           // Delay redirect by 2 seconds to allow message display
           setTimeout(function() {
-            window.location.href = "login.php";
+           location.reload();
           }, 2000);  
   
         } else {
