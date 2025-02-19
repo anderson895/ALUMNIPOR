@@ -89,7 +89,7 @@ class global_class extends db_connect
 
 
     public function fetch_campus(){
-        $query = $this->conn->prepare("SELECT * from campus");
+        $query = $this->conn->prepare("SELECT * from campus where campus_status='1'");
 
         if ($query->execute()) {
             $result = $query->get_result();

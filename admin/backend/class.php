@@ -11,7 +11,10 @@ class global_class extends db_connect
 
 
     public function fetch_alumni(){
-        $query = $this->conn->prepare("SELECT * from alumni where status='1'");
+        $query = $this->conn->prepare("SELECT * from alumni
+        LEFT JOIN campus
+        ON campus.campus_id = alumni.campus
+        Where status='1'");
 
         if ($query->execute()) {
             $result = $query->get_result();
@@ -44,7 +47,27 @@ class global_class extends db_connect
         return $row ? $row['profile_picture'] : null;
     }
     
+
     
+   public function getCampusPicture($campus_id)
+{
+    if (empty($campus_id)) {
+        return null; // Return null if campus_id is not provided
+    }
+
+    $query = $this->conn->prepare("SELECT campus_image FROM campus WHERE campus_id = ?");
+    $query->bind_param("i", $campus_id);
+    $query->execute();
+    $result = $query->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        return $row['campus_image']; // Return the image filename
+    } else {
+        return null; // Return null if no image found
+    }
+}
+
+
     public function DeleteAlumni($alumni_id) {
         $stmt = $this->conn->prepare("UPDATE alumni SET status = 0 WHERE alumni_id = ?");
         $stmt->bind_param("s", $alumni_id);
@@ -57,8 +80,22 @@ class global_class extends db_connect
             return "Error: " . $stmt->error;
         }
     }
-    
 
+
+    public function DeleteCampus($campus_id) {
+        $stmt = $this->conn->prepare("UPDATE campus SET campus_status = 0 WHERE campus_id = ?");
+        $stmt->bind_param("s", $campus_id);
+        
+
+         // Execute statement
+         if ($stmt->execute()) {
+            return "success";
+        } else {
+            return "Error: " . $stmt->error;
+        }
+    }
+    
+    
 
     public function UpdateAlumni($alumni_id,$fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $profileFileName)
     {
@@ -131,6 +168,46 @@ class global_class extends db_connect
             return false; // Failure
         }
     }
+
+
+
+
+
+    public function UpdateCampus($campus_id, $campus_name, $campus_description, $campus_image)
+    {
+        try {
+            if ($campus_image !== null) {
+                $query = $this->conn->prepare("
+                    UPDATE `campus` 
+                    SET campus_name = ?, campus_description = ?, campus_image = ? 
+                    WHERE campus_id = ?
+                ");
+                $query->bind_param("sssi", $campus_name, $campus_description, $campus_image, $campus_id);
+            } else {
+                $query = $this->conn->prepare("
+                    UPDATE `campus` 
+                    SET campus_name = ?, campus_description = ? 
+                    WHERE campus_id = ?
+                ");
+                $query->bind_param("ssi", $campus_name, $campus_description, $campus_id);
+            }
+    
+            if (!$query) {
+                return ['status' => 500, 'message' => 'Database query preparation failed.'];
+            }
+    
+            if ($query->execute()) {
+                return 200; // Success
+            } else {
+                return ['status' => 500, 'message' => 'SQL Error: ' . $query->error]; // Log the error
+            }
+        } catch (Exception $e) {
+            return ['status' => 500, 'message' => 'Exception: ' . $e->getMessage()];
+        }
+    }
+    
+    
+    
     
 
 

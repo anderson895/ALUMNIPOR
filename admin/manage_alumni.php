@@ -25,9 +25,11 @@
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">#</th>
+                        <th class="px-6 py-3 text-left text-gray-600 font-medium">Student No.</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">Name</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">Course</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">Year Graduated</th>
+                        <th class="px-6 py-3 text-left text-gray-600 font-medium">Campus</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">Email</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium">Profile</th>
                         <th class="px-6 py-3 text-left text-gray-600 font-medium text-center">Actions</th>

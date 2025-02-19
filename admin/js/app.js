@@ -1,6 +1,40 @@
 $(document).ready(function () {
 
 
+  $("#frmDeleteCampus").submit(function (e) {
+    e.preventDefault(); 
+
+    $('#spinner').show();
+    $('#btnDeleteCampus').prop('disabled', true);
+    
+    var formData = new FormData(this);
+
+    formData.append('requestType', 'DeleteCampus');
+    
+    $.ajax({
+        type: "POST",
+        url: "backend/end-points/controller.php",
+        data: formData,
+        processData: false, 
+        contentType: false,
+        success: function (response) {
+            console.log(response);
+            if(response.trim() === "success") {
+                alertify.success('Delete Successfully');
+
+                setTimeout(function () {
+                    location.reload();
+                }, 1000);
+
+            }
+        },
+       
+    });
+});
+
+
+
+
 
   $("#frmDeleteAlumni").submit(function (e) {
     e.preventDefault(); 
@@ -33,6 +67,46 @@ $(document).ready(function () {
     });
 });
 
+
+
+
+
+$("#frmUpdateCampus").submit(function (e) {
+  e.preventDefault(); // Prevent default form submission
+
+  // Show spinner and disable submit button
+  $('.spinner').show();
+  $('#btnUpdateCampus').prop('disabled', true);
+
+  var formData = new FormData(this); // 'this' refers to the form element
+  formData.append('requestType', 'UpdateCampus'); // Additional data if needed
+
+  $.ajax({
+      type: "POST",
+      url: "backend/end-points/controller.php", // Adjust URL if needed
+      data: formData,
+      processData: false, // Don't process data (needed for FormData)
+      contentType: false, // Don't set content-type (browser handles it)
+      dataType: "json", // Expect JSON response
+      success: function (response) {
+          console.log(response); // Debugging
+
+          if (response.status === "200") {
+              alertify.success(response.message || 'Campus updated successfully.');
+
+              setTimeout(function () {
+                  location.reload();
+              }, 1000);
+          } else {
+              alertify.error(response.message || 'Error updating campus.');
+          }
+      },
+      error: function (xhr, status, error) {
+          console.error("AJAX Error:", status, error);
+          alertify.error('An unexpected error occurred. Please try again.');
+      }
+  });
+});
 
   
 

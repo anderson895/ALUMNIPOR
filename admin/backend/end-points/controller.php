@@ -139,14 +139,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }else if($_POST['requestType']=='DeleteAlumni'){
 
                 $alumni_id = $_POST['alumni_id'];
-                echo $user = $db->DeleteAlumni($alumni_id);
+                echo $result = $db->DeleteAlumni($alumni_id);
 
         
 
 
+    }else if($_POST['requestType']=='DeleteCampus'){
+
+        $campus_id = $_POST['campus_id'];
+        echo $result = $db->DeleteCampus($campus_id);
+
+
+
+
+    }else if($_POST['requestType']=='UpdateCampus'){
+
+             // Retrieve other form data
+             $campus_id = $_POST['campus_id'] ?? null;
+             $campus_name = $_POST['campus_name'] ?? '';
+             $campus_description = $_POST['campus_description'] ?? '';
+
+
+            $uploadDir = '../../../uploads/';
+            $campus_image = null;
+
+            if (isset($_FILES['campus_image']) && $_FILES['campus_image']['error'] === UPLOAD_ERR_OK) {
+                // Generate a unique filename using uniqid() and get the file's extension
+                $fileExtension = pathinfo($_FILES['campus_image']['name'], PATHINFO_EXTENSION);
+                $uniqueFileName = uniqid('campus_', true) . '.' . $fileExtension;
+
+                // Set the full file path
+                $uploadFile = $uploadDir . $uniqueFileName;
+
+                // Move the uploaded file to the target directory
+                if (move_uploaded_file($_FILES['campus_image']['tmp_name'], $uploadFile)) {
+                    $campus_image = $uniqueFileName; // Store the new filename for database update
+
+                    // Fetch existing profile picture from database
+                    $existingProfilePict = $db->getCampusPicture($campus_id);
+
+                    // If an existing image is found, delete it
+                    if ($existingProfilePict && file_exists($uploadDir . $existingProfilePict)) {
+                        unlink($uploadDir . $existingProfilePict);
+                    }
+                } else {
+                    echo json_encode(['status' => '500', 'message' => 'Error uploading the file']);
+                    exit;
+                }
+            }
+
+            $result = $db->UpdateCampus($campus_id, $campus_name, $campus_description, $campus_image);
+
+            // Respond to AJAX
+            if ($result == 200) {
+                echo json_encode(['status' => '200', 'message' => 'Campus updated successfully']);
+            } else {
+                echo json_encode(['status' => '500', 'message' => 'Error updating campus']);
+            }
+
+
+
     }else {
-        echo json_encode(['status' => 'error', 'message' => 'Request type Invalid.']);
-    }
+            echo json_encode(['status' => 'error', 'message' => 'Request type Invalid.']);
+        }
 
 }else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 

@@ -18,8 +18,15 @@ if (mysqli_num_rows($fetch_campus) > 0):
 
                       
                         <td class="px-6 py-4 text-center">
-                            <button class="bg-gray-500 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition">Edit</button>
-                            <button class="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition ml-2">Delete</button>
+                            <button class="Show_update_campus_modal bg-gray-500 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition"
+                            data-campus_id ='<?=$campus['campus_id']?>'
+                            data-campus_name='<?=$campus['campus_name']?>'
+                            data-campus_description='<?=$campus['campus_description']?>'
+                            >Edit</button>
+                            <button class="Show_delete_campus_modal bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition ml-2"
+                            data-campus_id ='<?=$campus['campus_id']?>'
+                            data-campus_name='<?=$campus['campus_name']?>'
+                            >Delete</button>
                         </td>
                     </tr>
     <?php

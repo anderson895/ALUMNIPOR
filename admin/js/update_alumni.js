@@ -208,3 +208,17 @@ $("#update_alumni_modal").click(function(event) {
       }
     });
   });
+
+
+
+
+
+
+
+
+
+  var startYear = 1900;
+  var endYear = new Date().getFullYear();
+  for(var year = endYear; year >= startYear; year--){
+    $('.year').append('<option value="'+year+'">'+year+'</option>');
+  }
