@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+// ALUMNI
+
+
+
+
+// CAMPUS
     // Open Modal
     $("#Show_campus_report_modal").click(function() {
         $("#add_campus_modal").fadeIn();

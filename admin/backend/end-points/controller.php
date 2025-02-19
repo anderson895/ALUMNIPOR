@@ -74,8 +74,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
          
 
-    } else {
-        echo json_encode(['status' => 'error', 'message' => 'Order request failed.']);
+    }else if($_POST['requestType']=='UpdateAlumni'){
+    
+            print_r($_POST);
+
+                    // Retrieve form data safely
+            $alumni_id = $_POST['alumni_id'];
+            $fname = isset($_POST['fname']) ? trim($_POST['fname']) : '';
+            $mname = isset($_POST['mname']) ? trim($_POST['mname']) : '';
+            $lname = isset($_POST['lname']) ? trim($_POST['lname']) : '';
+            $bday = isset($_POST['bday']) ? trim($_POST['bday']) : '';
+            $student_no = isset($_POST['student_no']) ? trim($_POST['student_no']) : '';
+            $year_enrolled = isset($_POST['year_enrolled']) ? trim($_POST['year_enrolled']) : '';
+            $year_graduated = isset($_POST['year_graduated']) ? trim($_POST['year_graduated']) : '';
+            $campus = isset($_POST['campus']) ? trim($_POST['campus']) : '';
+            $course = isset($_POST['course']) ? trim($_POST['course']) : '';
+            $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+
+            // Encode JSON fields properly
+            $current_work = isset($_POST['current_work']) ? json_encode($_POST['current_work'], JSON_UNESCAPED_UNICODE) : '{}';
+            $previous_work = isset($_POST['previous_work']) ? json_encode($_POST['previous_work'], JSON_UNESCAPED_UNICODE) : '[]';
+
+            // Fetch existing profile picture from database
+            $existingProfilePict = $db->getProfilePicture($alumni_id); // Function to get existing profile picture
+            $profilePict = isset($_FILES['profilePict']) ? $_FILES['profilePict'] : null;
+
+            $profileFileName = $existingProfilePict; // Default to existing file
+
+            if ($profilePict && $profilePict['error'] === UPLOAD_ERR_OK) {
+                // Get file extension and ensure it’s an image
+                $fileTmpPath = $profilePict['tmp_name'];
+                $fileName = $profilePict['name'];
+                $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+                // Generate a unique file name
+                $uniqueFileName = uniqid('profile_', true) . '.' . $fileExtension;
+                $uploadDir = '../../../uploads/';
+                $uploadPath = $uploadDir . $uniqueFileName;
+
+                // Validate the file type
+                $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+                if (!in_array($fileExtension, $allowedTypes)) {
+                    echo "Invalid image type.";
+                    exit;
+                }
+
+                // Move the file to the uploads directory
+                if (move_uploaded_file($fileTmpPath, $uploadPath)) {
+                    // Delete old profile picture if it exists
+                    if ($existingProfilePict && file_exists($uploadDir . $existingProfilePict)) {
+                        unlink($uploadDir . $existingProfilePict);
+                    }
+
+                    $profileFileName = $uniqueFileName;
+                } else {
+                    echo "Error uploading profile picture.";
+                    exit;
+                }
+            } 
+
+            // Call the AlumniRegistration method
+            echo $user = $db->UpdateAlumni($alumni_id,$fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $profileFileName);
+
+
+    
+    }        else {
+        echo json_encode(['status' => 'error', 'message' => 'Request type Invalid.']);
     }
 
 }else if ($_SERVER['REQUEST_METHOD'] === 'GET') {

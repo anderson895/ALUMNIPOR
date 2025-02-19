@@ -9,6 +9,17 @@ class global_class extends db_connect
         $this->connect();
     }
 
+
+    public function fetch_alumni(){
+        $query = $this->conn->prepare("SELECT * from alumni");
+
+        if ($query->execute()) {
+            $result = $query->get_result();
+            return $result;
+        }
+    }
+
+
     public function fetch_campus(){
         $query = $this->conn->prepare("SELECT * from campus");
 
@@ -19,6 +30,73 @@ class global_class extends db_connect
     }
 
 
+    
+    public function getProfilePicture($alumni_id) {
+
+        $query = "SELECT profile_picture FROM alumni WHERE alumni_id = $alumni_id";
+        $result = $this->conn->query($query);
+    
+        if (!$result) {
+            return null;
+        }
+        $row = $result->fetch_assoc();
+    
+        return $row ? $row['profile_picture'] : null;
+    }
+    
+    
+
+
+
+    public function UpdateAlumni($alumni_id,$fname, $mname, $lname, $bday, $current_work, $previous_work, $student_no, $year_enrolled, $year_graduated, $campus, $course, $email, $profileFileName)
+    {
+        $sql = "UPDATE alumni SET 
+                    fname = ?, 
+                    mname = ?, 
+                    lname = ?, 
+                    bday = ?, 
+                    current_work = ?, 
+                    previous_work = ?, 
+                    year_enrolled = ?, 
+                    year_graduated = ?, 
+                    campus = ?, 
+                    course = ?, 
+                    email = ?";
+    
+        // Array for parameter values
+        $params = [$fname, $mname, $lname, $bday, $current_work, $previous_work, $year_enrolled, $year_graduated, $campus, $course, $email];
+    
+        // If profile picture is provided, include it in the update
+        if (!empty($profileFileName)) {
+            $sql .= ", profile_picture = ?";
+            $params[] = $profileFileName;
+        }
+    
+        // Add WHERE condition
+        $sql .= " WHERE alumni_id = ?"; 
+        $params[] = $alumni_id;
+    
+        // Prepare statement
+        $stmt = $this->conn->prepare($sql);
+        
+        if (!$stmt) {
+            die("Error preparing statement: " . $this->conn->error);
+        }
+    
+        // Create parameter types dynamically
+        $paramTypes = str_repeat("s", count($params));
+        
+        // Bind parameters dynamically
+        $stmt->bind_param($paramTypes, ...$params);
+    
+        // Execute statement
+        if ($stmt->execute()) {
+            return "success";
+        } else {
+            return "Error: " . $stmt->error;
+        }
+    }
+    
 
 
     public function AddCampus($campus_name, $campus_description, $campus_image)
@@ -45,26 +123,18 @@ class global_class extends db_connect
 
 
 
-    public function check_account($admin_id) {
-        // I-sanitize ang admin_id para maiwasan ang SQL injection
-        $admin_id = intval($admin_id);
-    
-        // SQL query para hanapin ang admin_id sa table
-        $query = "SELECT * FROM admin WHERE admin_id = $admin_id";
-    
+    public function check_account($admin_id)
+    {
+     $query = "SELECT * FROM admin WHERE admin_id = $admin_id";
         $result = $this->conn->query($query);
-    
-        // Prepare ang array para sa result
         $items = [];
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 $items[] = $row;
             }
         }
-        return $items; // Ibabalik ang array ng results o empty array kung walang nahanap
+        return $items;
     }
-
-
 
 
 
