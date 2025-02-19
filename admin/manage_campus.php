@@ -91,7 +91,7 @@
     <div class="bg-white p-8 rounded-lg shadow-lg w-full sm:max-w-3xl max-h-[90vh] overflow-y-auto flex flex-col justify-between relative">
 
         <!-- Close Button -->
-        <button id="close_campus_modal" class="absolute top-4 right-4 text-gray-700 p-2 rounded-full hover:bg-gray-600 focus:outline-none z-10">
+        <button class="close_campus_modal absolute top-4 right-4 text-gray-700 p-2 rounded-full hover:bg-gray-600 focus:outline-none z-10">
             &times;
         </button>
 
@@ -151,7 +151,7 @@
     <div class="bg-white p-8 rounded-lg shadow-lg w-full sm:max-w-3xl max-h-[90vh] overflow-y-auto flex flex-col justify-between relative">
 
         <!-- Close Button -->
-        <button id="close_campus_modal" class="absolute top-4 right-4 text-gray-700 p-2 rounded-full hover:bg-gray-600 focus:outline-none z-10">
+        <button class="close_campus_modal absolute top-4 right-4 text-gray-700 p-2 rounded-full hover:bg-gray-600 focus:outline-none z-10">
             &times;
         </button>
 
@@ -171,20 +171,20 @@
         <!-- Campus Images -->
             <div>
                 <label for="campus_image" class="block text-sm font-medium text-gray-700">Campus Images</label>
-                <input type="file" name="campus_image" id="campus_image" accept="image/*" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <input type="file" name="campus_image" id="campus_image" accept="image/*" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
             </div>
 
 
             <!-- Campus Name -->
             <div>
                 <label for="campus_name" class="block text-sm font-medium text-gray-700">Campus Name</label>
-                <input type="text" name="campus_name" id="campus_name" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter campus name">
+                <input type="text" name="campus_name" id="campus_name" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter campus name" required>
             </div>
 
             <!-- Campus Description -->
             <div>
                 <label for="campus_description" class="block text-sm font-medium text-gray-700">Campus Description</label>
-                <input type="text" name="campus_description" id="campus_description" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter campus description">
+                <input type="text" name="campus_description" id="campus_description" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter campus description" required>
             </div>
 
             <!-- Submit Button -->

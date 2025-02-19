@@ -81,8 +81,9 @@ $(document).ready(function() {
     });
 
     // Close Modal
-    $("#close_campus_modal").click(function() {
+    $(".close_campus_modal").click(function() {
         $("#update_campus_modal").fadeOut();
+        $("#add_campus_modal").fadeOut();
     });
 
     // Close Modal when clicking outside the modal content
