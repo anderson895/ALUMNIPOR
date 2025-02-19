@@ -10,6 +10,25 @@ class global_class extends db_connect
     }
 
 
+    public function get_analytics()
+    {
+        $query = $this->conn->prepare("
+         SELECT  
+            (SELECT COUNT(*) FROM `alumni` WHERE `status` = '1') AS total_alumni,
+            (SELECT COUNT(*) FROM `campus` WHERE `campus_status` = '1') AS total_campus
+        ");
+    
+        if ($query->execute()) {
+            $result = $query->get_result()->fetch_assoc();
+            // Return the result as JSON
+            echo json_encode($result);
+            return;
+        }
+    }
+    
+    
+
+
     public function fetch_alumni(){
         $query = $this->conn->prepare("SELECT * from alumni
         LEFT JOIN campus

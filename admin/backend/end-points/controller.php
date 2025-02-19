@@ -205,8 +205,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    $response = $db->getPaymentQr();
-    echo json_encode(['status' => $response]);
+    
 }
 
 
