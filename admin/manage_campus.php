@@ -114,7 +114,7 @@
                 <input type="file" name="campus_image" id="update_campus_image" accept="image/*" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <!-- Campus ID -->
-            <div>
+            <div hidden>
                 <label for="update_campus_id" class="block text-sm font-medium text-gray-700">Campus ID</label>
                 <input type="text" name="campus_id" id="update_campus_id" class="mt-1 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter campus name">
             </div>

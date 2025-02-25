@@ -53,7 +53,7 @@ if (isset($_SESSION['alumni_id'])) {
         <!-- Logo Section -->
         <div class="flex items-center space-x-4">
             <img src="../uploads/<?=$user[0]['profile_picture']?>" alt="Website Logo" class="rounded-full w-12 h-12 object-contain">
-            <h1 class="text-2xl font-semibold"><?=$user[0]['fname']?> <?=$user[0]['mname']?> <?=$user[0]['lname']?></h1>
+            <h1 class="text-2xl font-semibold"><?=ucfirst($user[0]['fname'])?> <?=$user[0]['mname']?> <?=$user[0]['lname']?></h1>
         </div>
 
         <!-- Mobile Hamburger Menu Button -->
