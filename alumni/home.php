@@ -12,7 +12,9 @@
                 <img class="w-full h-48 object-cover" src="../uploads/<?=$campus['campus_image']?>" alt="Campus 1">
                 <div class="p-6">
                     <h3 class="text-2xl font-semibold text-gray-800"><?=$campus['campus_name']?></h3>
-                    <p class="text-gray-600 mt-2"><?=$campus['campus_description']?></p>
+                    <p class="text-gray-600 mt-2 campus-description">
+                        <?=$campus['campus_description']?>
+                    </p>
                     <!-- Button for selecting campus -->
                     <a href="javascript:void(0);" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 select-campus" data-campus-name="<?=$campus['campus_name']?>" data-campus-id="<?=$campus['campus_id']?>">Select</a>
                 </div>
@@ -119,3 +121,4 @@
 
 <?php include "components/footer.php"; ?>
 <script src="js/fetch_campus.js"></script>
+<script src="../function/js/see_more.js"></script>

@@ -67,11 +67,11 @@ $db = new global_class();
           </div>
           <div>
             <label for="current_work_Position" class="block text-sm font-medium text-gray-700">Position</label>
-            <input type="text" id="current_work_Position" name="current_work_Position" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" required>
+            <input type="date" id="current_work_Position" name="current_work_Position" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" required>
           </div>
           <div>
             <label for="current_work_Start" class="block text-sm font-medium text-gray-700">Start</label>
-            <input type="text" id="current_work_Start" name="current_work_Start" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" required>
+            <input type="date" id="current_work_Start" name="current_work_Start" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500" required>
           </div>
         </div>
       </div>
